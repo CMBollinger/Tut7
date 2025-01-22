@@ -58,7 +58,7 @@
             <legend>Customer Information</legend>
                <div class="formRow">
                   <label for="name">Name*</label>
-                  <input type="text" name="custName" id="name" placeholder="first and last name">
+                  <input type="text" name="custName" id="name" placeholder="first and last name" required>
                </div>
                
                <div class="formRow">
@@ -79,23 +79,115 @@
                
                <div class="formRow">
                   <label for="zip">Postal Code</label>
-                  <input type="text" name="custZip" id="zip" placeholder="nnnnn (-nnnn)">
+                  <input type="text" name="custZip" id="zip" placeholder="nnnnn (-nnnn)" pattern="^\d{5}(-\d{4})?$">
                </div>
 
                <div class="formRow">
                   <label for="phone">Phone Number</label>
-                  <input type="tel" name="custPhone" id="phone" placeholder="(nnn) nnn-nnnn">
+                  <input type="tel" name="custPhone" id="phone" placeholder="(nnn) nnn-nnnn" pattern="^\d{10}$|^(\(\d{3}\)\s*)?\d{3}[\s-]?\d{4}$">
                </div>
 
                <div class="formRow">
                   <label for="email">E-mail*</label>
-                  <input type="email" name="custEmail" id="email">
+                  <input type="email" name="custEmail" id="email" required>
                </div>
+
+               <div class="formRow">
+                  <label for="info">Where did you hear about us?
+                  <br> (select all that apply)
+                  </label>
+                  <select name="infoSrc" id="info" size="5" multiple>
+                     <option value="internet">Internet</option>
+                     <option value="mag">Magazine</option>
+                     <option value="news">Newspaper</option>
+                     <option value="word">Word of Mouth</option>
+                     <option value="other">Other</option>
+                  </select>
+               </div>
+
+               <div class="formRow">
+                  <label for="dish">What's your favorite dish?</label>
+                  <input type="text" name="favDish" id="dish" list="dishType">
+                  <datalist id="dishType">
+                     <option value="Antipasto Pizza"></option>
+                     <option value="Big Kahuna Pizza"></option>
+                     <option value="BBQ Chicken Pizza"></option>
+                     <option value="Mediterranean Herb Pizza"></option>
+                     <option value="Pasta Rolls"></option>
+                     <option value="Pasto Artichoke Pizza"></option>
+                  </datalist>
+               </div>
+
+               <div class="formRow">
+                  <label for="dineSpin">How many times do you dine out per month?</label>
+                  <input type="number" name="dineOut" id="dineSpin" value="1" step="1" min="0" max="20">
+               </div>
+
+               <input type="checkbox" name="mailMe" id="mailCB" value="yes">
+               <label for="mailCB">Add me to your mailing list for great coupons and specials!</label>
+
          </fieldset>
 
          <fieldset id="expInfo">
             <legend>Share Your Experience at Red Ball Pizza</legend>
+            <div class="formRow">
+               <label for="visit">Date of Visit</label>
+               <input type="date" name=visitDate" id="visit">
+            </div>
+
+            <div class="formRow">
+               <label for="order">Order Type</label>
+               <select name="orderType" id="order">
+                  <option value="order1">Carry out</option>
+                  <option value="order2">Delivery</option>
+                  <option value="order3" selected>Dine in</option>
+                  <option value="order4">Take 'n bake</option>
+               </select>
+            </div>
+
+            <div class="formRow">
+               <label for="">Was your service friendly?</label>
+               <fieldset class="optGroup">
+                  <label for="fYes">Yes</label>
+                  <input name="sFriend" id="fYes" value="yes" type="radio">
+                  <label for="fNo">No</label>
+                  <input name="sFriend" id="fNo" value="no" type="radio">
+               </fieldset>
+                
+            </div>
+
+            <div class="formRow">
+               <label for="">Was your order correct?</label>
+               <fieldset>
+                  <label for="cYes">Yes</label>
+                  <input name="oCorrect" id="cYes" value="yes" type="radio">
+                  <label for="cNo">No</label>
+                  <input name="oCorrect" id="cNo" value="no" type="radio">
+               </fieldset>
+            </div>
+
+            <div class="formRow">
+               <label for="">Was your order hot?</label>
+               <fieldset>
+                  <label for="hYes">Yes</label>
+                  <input name="foodHot" id="hYes" value="yes" type="radio">
+                  <label for="hNo">No</label>
+                  <input name="foodHot" id="hNo" value="no" type="radio">
+               </fieldset>
+            </div>
+            <div class="formRow">
+               <label for="rangeBox">Rate the overall service <br> (0=poor; 10=great)</label>
+               0
+               <input type="range" name="serviceRate" id="rangeBox" value="5" step="1" min="0" max="10">
+               10
+            </div>
+            <label for="commBox">Tell us more about your experience!</label>
+            <textarea name="custExp" id="commBox"></textarea>
          </fieldset>
+         <div id="buttons">
+            <input type="submit" value="Submit My Survey">
+            <input type="reset" value="Cancel">
+         </div>
       </form>
      
    </section>
